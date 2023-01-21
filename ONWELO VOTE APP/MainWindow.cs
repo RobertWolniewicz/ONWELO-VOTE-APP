@@ -11,7 +11,7 @@ namespace ONWELO_VOTE_APP
             CurentUser = User;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void MainWindow_Load(object sender, EventArgs e)
         {
             UserLable.Text = "Hi " + CurentUser.Name;
             ResultLabel.Text = "";
@@ -25,6 +25,12 @@ namespace ONWELO_VOTE_APP
                 AmountCandidateslabel.Text = "You can add " + CurentUser.AmountOfCandidats.ToString() + " candidates";
             }
             
+        }
+
+        private async void EditAccountButton_Click(object sender, EventArgs e)
+        {
+            var form = new UserDataWindow(CurentUser);
+            await Task.Run(() => form.ShowDialog());
         }
     }
 }

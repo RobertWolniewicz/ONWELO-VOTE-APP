@@ -46,20 +46,20 @@
             this.CandidatesSearchTextBox = new System.Windows.Forms.TextBox();
             this.LogOutButton = new System.Windows.Forms.Button();
             this.DeleteAccountButton = new System.Windows.Forms.Button();
-            this.EditAccountButton = new System.Windows.Forms.Button();
             this.VotersGroupBox = new System.Windows.Forms.GroupBox();
-            this.CandidatesGroupBox = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.VotersTotalResultLabel = new System.Windows.Forms.Label();
-            this.VotersResultLabel = new System.Windows.Forms.Label();
-            this.VotersPagesLabel = new System.Windows.Forms.Label();
-            this.VotersTotalPagesLabel = new System.Windows.Forms.Label();
             this.VotersCurrentPageTextBox = new System.Windows.Forms.TextBox();
+            this.VotersTotalPagesLabel = new System.Windows.Forms.Label();
+            this.VotersPagesLabel = new System.Windows.Forms.Label();
+            this.VotersResultLabel = new System.Windows.Forms.Label();
+            this.VotersTotalResultLabel = new System.Windows.Forms.Label();
+            this.CandidatesGroupBox = new System.Windows.Forms.GroupBox();
+            this.CandidatesTotalPagesLabel = new System.Windows.Forms.Label();
             this.CandidatesCurrentPageTextBox = new System.Windows.Forms.TextBox();
             this.CandidatesPagesLabel = new System.Windows.Forms.Label();
             this.CandidatesResultsLabel = new System.Windows.Forms.Label();
             this.CandidatesTotalResultsLabel = new System.Windows.Forms.Label();
-            this.CandidatesTotalPagesLabel = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.EditAccountButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.voterBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.candidateBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VotersDataGridView)).BeginInit();
@@ -221,15 +221,6 @@
             this.DeleteAccountButton.Text = "Delete account";
             this.DeleteAccountButton.UseVisualStyleBackColor = true;
             // 
-            // EditAccountButton
-            // 
-            this.EditAccountButton.Location = new System.Drawing.Point(301, 7);
-            this.EditAccountButton.Name = "EditAccountButton";
-            this.EditAccountButton.Size = new System.Drawing.Size(75, 41);
-            this.EditAccountButton.TabIndex = 19;
-            this.EditAccountButton.Text = "Edit account";
-            this.EditAccountButton.UseVisualStyleBackColor = true;
-            // 
             // VotersGroupBox
             // 
             this.VotersGroupBox.Controls.Add(this.VotersCurrentPageTextBox);
@@ -246,6 +237,55 @@
             this.VotersGroupBox.TabIndex = 20;
             this.VotersGroupBox.TabStop = false;
             this.VotersGroupBox.Text = "Voters";
+            // 
+            // VotersCurrentPageTextBox
+            // 
+            this.VotersCurrentPageTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.VotersCurrentPageTextBox.Location = new System.Drawing.Point(370, 208);
+            this.VotersCurrentPageTextBox.Name = "VotersCurrentPageTextBox";
+            this.VotersCurrentPageTextBox.Size = new System.Drawing.Size(26, 23);
+            this.VotersCurrentPageTextBox.TabIndex = 20;
+            this.VotersCurrentPageTextBox.Text = "1";
+            // 
+            // VotersTotalPagesLabel
+            // 
+            this.VotersTotalPagesLabel.AutoSize = true;
+            this.VotersTotalPagesLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.VotersTotalPagesLabel.Location = new System.Drawing.Point(402, 211);
+            this.VotersTotalPagesLabel.Name = "VotersTotalPagesLabel";
+            this.VotersTotalPagesLabel.Size = new System.Drawing.Size(18, 15);
+            this.VotersTotalPagesLabel.TabIndex = 19;
+            this.VotersTotalPagesLabel.Text = "/1";
+            // 
+            // VotersPagesLabel
+            // 
+            this.VotersPagesLabel.AutoSize = true;
+            this.VotersPagesLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.VotersPagesLabel.Location = new System.Drawing.Point(370, 190);
+            this.VotersPagesLabel.Name = "VotersPagesLabel";
+            this.VotersPagesLabel.Size = new System.Drawing.Size(38, 15);
+            this.VotersPagesLabel.TabIndex = 18;
+            this.VotersPagesLabel.Text = "Pages";
+            // 
+            // VotersResultLabel
+            // 
+            this.VotersResultLabel.AutoSize = true;
+            this.VotersResultLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.VotersResultLabel.Location = new System.Drawing.Point(392, 118);
+            this.VotersResultLabel.Name = "VotersResultLabel";
+            this.VotersResultLabel.Size = new System.Drawing.Size(13, 15);
+            this.VotersResultLabel.TabIndex = 17;
+            this.VotersResultLabel.Text = "0";
+            // 
+            // VotersTotalResultLabel
+            // 
+            this.VotersTotalResultLabel.AutoSize = true;
+            this.VotersTotalResultLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.VotersTotalResultLabel.Location = new System.Drawing.Point(370, 90);
+            this.VotersTotalResultLabel.Name = "VotersTotalResultLabel";
+            this.VotersTotalResultLabel.Size = new System.Drawing.Size(72, 15);
+            this.VotersTotalResultLabel.TabIndex = 16;
+            this.VotersTotalResultLabel.Text = "Total Results";
             // 
             // CandidatesGroupBox
             // 
@@ -266,64 +306,15 @@
             this.CandidatesGroupBox.TabStop = false;
             this.CandidatesGroupBox.Text = "Candidates";
             // 
-            // pictureBox1
+            // CandidatesTotalPagesLabel
             // 
-            this.pictureBox1.Image = global::ONWELO_VOTE_APP.Properties.Resources.Vote;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 457);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(450, 172);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 22;
-            this.pictureBox1.TabStop = false;
-            // 
-            // VotersTotalResultLabel
-            // 
-            this.VotersTotalResultLabel.AutoSize = true;
-            this.VotersTotalResultLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.VotersTotalResultLabel.Location = new System.Drawing.Point(370, 90);
-            this.VotersTotalResultLabel.Name = "VotersTotalResultLabel";
-            this.VotersTotalResultLabel.Size = new System.Drawing.Size(72, 15);
-            this.VotersTotalResultLabel.TabIndex = 16;
-            this.VotersTotalResultLabel.Text = "Total Results";
-            // 
-            // VotersResultLabel
-            // 
-            this.VotersResultLabel.AutoSize = true;
-            this.VotersResultLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.VotersResultLabel.Location = new System.Drawing.Point(392, 118);
-            this.VotersResultLabel.Name = "VotersResultLabel";
-            this.VotersResultLabel.Size = new System.Drawing.Size(13, 15);
-            this.VotersResultLabel.TabIndex = 17;
-            this.VotersResultLabel.Text = "0";
-            // 
-            // VotersPagesLabel
-            // 
-            this.VotersPagesLabel.AutoSize = true;
-            this.VotersPagesLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.VotersPagesLabel.Location = new System.Drawing.Point(370, 190);
-            this.VotersPagesLabel.Name = "VotersPagesLabel";
-            this.VotersPagesLabel.Size = new System.Drawing.Size(38, 15);
-            this.VotersPagesLabel.TabIndex = 18;
-            this.VotersPagesLabel.Text = "Pages";
-            // 
-            // VotersTotalPagesLabel
-            // 
-            this.VotersTotalPagesLabel.AutoSize = true;
-            this.VotersTotalPagesLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.VotersTotalPagesLabel.Location = new System.Drawing.Point(402, 211);
-            this.VotersTotalPagesLabel.Name = "VotersTotalPagesLabel";
-            this.VotersTotalPagesLabel.Size = new System.Drawing.Size(18, 15);
-            this.VotersTotalPagesLabel.TabIndex = 19;
-            this.VotersTotalPagesLabel.Text = "/1";
-            // 
-            // VotersCurrentPageTextBox
-            // 
-            this.VotersCurrentPageTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.VotersCurrentPageTextBox.Location = new System.Drawing.Point(370, 208);
-            this.VotersCurrentPageTextBox.Name = "VotersCurrentPageTextBox";
-            this.VotersCurrentPageTextBox.Size = new System.Drawing.Size(26, 23);
-            this.VotersCurrentPageTextBox.TabIndex = 20;
-            this.VotersCurrentPageTextBox.Text = "1";
+            this.CandidatesTotalPagesLabel.AutoSize = true;
+            this.CandidatesTotalPagesLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CandidatesTotalPagesLabel.Location = new System.Drawing.Point(404, 211);
+            this.CandidatesTotalPagesLabel.Name = "CandidatesTotalPagesLabel";
+            this.CandidatesTotalPagesLabel.Size = new System.Drawing.Size(18, 15);
+            this.CandidatesTotalPagesLabel.TabIndex = 25;
+            this.CandidatesTotalPagesLabel.Text = "/1";
             // 
             // CandidatesCurrentPageTextBox
             // 
@@ -364,25 +355,35 @@
             this.CandidatesTotalResultsLabel.TabIndex = 21;
             this.CandidatesTotalResultsLabel.Text = "Total Results";
             // 
-            // CandidatesTotalPagesLabel
+            // pictureBox1
             // 
-            this.CandidatesTotalPagesLabel.AutoSize = true;
-            this.CandidatesTotalPagesLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CandidatesTotalPagesLabel.Location = new System.Drawing.Point(404, 211);
-            this.CandidatesTotalPagesLabel.Name = "CandidatesTotalPagesLabel";
-            this.CandidatesTotalPagesLabel.Size = new System.Drawing.Size(18, 15);
-            this.CandidatesTotalPagesLabel.TabIndex = 25;
-            this.CandidatesTotalPagesLabel.Text = "/1";
+            this.pictureBox1.Image = global::ONWELO_VOTE_APP.Properties.Resources.Vote;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 457);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(450, 172);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 22;
+            this.pictureBox1.TabStop = false;
+            // 
+            // EditAccountButton
+            // 
+            this.EditAccountButton.Location = new System.Drawing.Point(301, 7);
+            this.EditAccountButton.Name = "EditAccountButton";
+            this.EditAccountButton.Size = new System.Drawing.Size(75, 41);
+            this.EditAccountButton.TabIndex = 23;
+            this.EditAccountButton.Text = "Edit Account";
+            this.EditAccountButton.UseVisualStyleBackColor = true;
+            this.EditAccountButton.Click += new System.EventHandler(this.EditAccountButton_Click);
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(941, 641);
+            this.Controls.Add(this.EditAccountButton);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.CandidatesGroupBox);
             this.Controls.Add(this.VotersGroupBox);
-            this.Controls.Add(this.EditAccountButton);
             this.Controls.Add(this.DeleteAccountButton);
             this.Controls.Add(this.LogOutButton);
             this.Controls.Add(this.VoteButton);
@@ -394,7 +395,7 @@
             this.Controls.Add(this.UserLable);
             this.Name = "MainWindow";
             this.Text = "Voting app";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.MainWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.voterBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.candidateBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VotersDataGridView)).EndInit();
@@ -428,7 +429,6 @@
         private TextBox CandidatesSearchTextBox;
         private Button LogOutButton;
         private Button DeleteAccountButton;
-        private Button EditAccountButton;
         private GroupBox VotersGroupBox;
         private GroupBox CandidatesGroupBox;
         private PictureBox pictureBox1;
@@ -442,5 +442,6 @@
         private Label CandidatesPagesLabel;
         private Label CandidatesResultsLabel;
         private Label CandidatesTotalResultsLabel;
+        private Button EditAccountButton;
     }
 }

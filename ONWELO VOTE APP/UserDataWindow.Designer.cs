@@ -1,6 +1,6 @@
 ﻿namespace ONWELO_VOTE_APP
 {
-    partial class SignInWindow
+    partial class UserDataWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SignInButton = new System.Windows.Forms.Button();
+            this.SaveButton = new System.Windows.Forms.Button();
             this.Namelabel = new System.Windows.Forms.Label();
             this.EmailLabel = new System.Windows.Forms.Label();
             this.PasswordLabel = new System.Windows.Forms.Label();
@@ -40,15 +40,15 @@
             this.PasswordTextBox = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
-            // SignInButton
+            // SaveButton
             // 
-            this.SignInButton.Location = new System.Drawing.Point(179, 193);
-            this.SignInButton.Name = "SignInButton";
-            this.SignInButton.Size = new System.Drawing.Size(104, 59);
-            this.SignInButton.TabIndex = 0;
-            this.SignInButton.Text = "Sign In";
-            this.SignInButton.UseVisualStyleBackColor = true;
-            this.SignInButton.Click += new System.EventHandler(this.SignInButton_Click);
+            this.SaveButton.Location = new System.Drawing.Point(179, 193);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(104, 59);
+            this.SaveButton.TabIndex = 0;
+            this.SaveButton.Text = "Sign In";
+            this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // Namelabel
             // 
@@ -127,7 +127,7 @@
             this.PasswordTextBox.Size = new System.Drawing.Size(149, 23);
             this.PasswordTextBox.TabIndex = 11;
             // 
-            // SignInWindow
+            // UserDataWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -141,8 +141,8 @@
             this.Controls.Add(this.PasswordLabel);
             this.Controls.Add(this.EmailLabel);
             this.Controls.Add(this.Namelabel);
-            this.Controls.Add(this.SignInButton);
-            this.Name = "SignInWindow";
+            this.Controls.Add(this.SaveButton);
+            this.Name = "UserDataWindow";
             this.Text = "Sign In";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -151,7 +151,7 @@
 
         #endregion
 
-        private Button SignInButton;
+        private Button SaveButton;
         private Label Namelabel;
         private Label EmailLabel;
         private Label PasswordLabel;

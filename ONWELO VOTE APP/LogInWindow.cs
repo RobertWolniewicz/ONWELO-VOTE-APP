@@ -33,7 +33,6 @@ namespace ONWELO_VOTE_APP
                 var form = new MainWindow(User);
                 this.Hide();
                 await Task.Run(() => form.ShowDialog());
-                this.Close();
             }
             else
             {
@@ -45,7 +44,7 @@ namespace ONWELO_VOTE_APP
 
         private async void SignInButton_Click(object sender, EventArgs e)
         {
-            var form = new SignInWindow();
+            var form = new UserDataWindow();
             await Task.Run(() => form.ShowDialog());
             ResultLabel.Text = "Please log in";
         }
