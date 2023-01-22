@@ -32,7 +32,7 @@
             this.voterBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.candidateBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.VotersDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.CandidatesDataGridView = new System.Windows.Forms.DataGridView();
             this.UserLable = new System.Windows.Forms.Label();
             this.InfoLabel3 = new System.Windows.Forms.Label();
             this.InfoLabel = new System.Windows.Forms.Label();
@@ -53,17 +53,19 @@
             this.VotersResultLabel = new System.Windows.Forms.Label();
             this.VotersTotalResultLabel = new System.Windows.Forms.Label();
             this.CandidatesGroupBox = new System.Windows.Forms.GroupBox();
+            this.InfoLabel4 = new System.Windows.Forms.Label();
+            this.CandidateNameTextBox = new System.Windows.Forms.TextBox();
             this.CandidatesTotalPagesLabel = new System.Windows.Forms.Label();
             this.CandidatesCurrentPageTextBox = new System.Windows.Forms.TextBox();
             this.CandidatesPagesLabel = new System.Windows.Forms.Label();
-            this.CandidatesResultsLabel = new System.Windows.Forms.Label();
+            this.CandidatesResultLabel = new System.Windows.Forms.Label();
             this.CandidatesTotalResultsLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.EditAccountButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.voterBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.candidateBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.VotersDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CandidatesDataGridView)).BeginInit();
             this.VotersGroupBox.SuspendLayout();
             this.CandidatesGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -80,20 +82,26 @@
             // VotersDataGridView
             // 
             this.VotersDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.VotersDataGridView.Location = new System.Drawing.Point(6, 90);
+            this.VotersDataGridView.Location = new System.Drawing.Point(6, 68);
             this.VotersDataGridView.Name = "VotersDataGridView";
+            this.VotersDataGridView.ReadOnly = true;
             this.VotersDataGridView.RowTemplate.Height = 25;
-            this.VotersDataGridView.Size = new System.Drawing.Size(358, 296);
+            this.VotersDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.VotersDataGridView.Size = new System.Drawing.Size(244, 318);
             this.VotersDataGridView.TabIndex = 0;
             // 
-            // dataGridView1
+            // CandidatesDataGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 90);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(364, 296);
-            this.dataGridView1.TabIndex = 2;
+            this.CandidatesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CandidatesDataGridView.Location = new System.Drawing.Point(6, 68);
+            this.CandidatesDataGridView.Name = "CandidatesDataGridView";
+            this.CandidatesDataGridView.ReadOnly = true;
+            this.CandidatesDataGridView.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.CandidatesDataGridView.RowTemplate.Height = 25;
+            this.CandidatesDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.CandidatesDataGridView.Size = new System.Drawing.Size(244, 318);
+            this.CandidatesDataGridView.TabIndex = 2;
+            this.CandidatesDataGridView.SelectionChanged += new System.EventHandler(this.CandidatesDataGridView_SelectionChanged);
             // 
             // UserLable
             // 
@@ -148,11 +156,11 @@
             // ResultLabel
             // 
             this.ResultLabel.AutoSize = true;
-            this.ResultLabel.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ResultLabel.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ResultLabel.ForeColor = System.Drawing.Color.Firebrick;
             this.ResultLabel.Location = new System.Drawing.Point(626, 564);
             this.ResultLabel.Name = "ResultLabel";
-            this.ResultLabel.Size = new System.Drawing.Size(154, 37);
+            this.ResultLabel.Size = new System.Drawing.Size(113, 28);
             this.ResultLabel.TabIndex = 10;
             this.ResultLabel.Text = "Some value";
             // 
@@ -160,7 +168,7 @@
             // 
             this.AmountCandidateslabel.AutoSize = true;
             this.AmountCandidateslabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.AmountCandidateslabel.Location = new System.Drawing.Point(255, 23);
+            this.AmountCandidateslabel.Location = new System.Drawing.Point(255, 30);
             this.AmountCandidateslabel.Name = "AmountCandidateslabel";
             this.AmountCandidateslabel.Size = new System.Drawing.Size(183, 21);
             this.AmountCandidateslabel.TabIndex = 11;
@@ -169,12 +177,13 @@
             // AddCandidateButton
             // 
             this.AddCandidateButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.AddCandidateButton.Location = new System.Drawing.Point(288, 47);
+            this.AddCandidateButton.Location = new System.Drawing.Point(288, 133);
             this.AddCandidateButton.Name = "AddCandidateButton";
             this.AddCandidateButton.Size = new System.Drawing.Size(87, 37);
             this.AddCandidateButton.TabIndex = 13;
             this.AddCandidateButton.Text = "Add";
             this.AddCandidateButton.UseVisualStyleBackColor = true;
+            this.AddCandidateButton.Click += new System.EventHandler(this.AddCandidateButton_Click);
             // 
             // VoteButton
             // 
@@ -184,6 +193,7 @@
             this.VoteButton.TabIndex = 14;
             this.VoteButton.Text = "Vote";
             this.VoteButton.UseVisualStyleBackColor = true;
+            this.VoteButton.Click += new System.EventHandler(this.VoteButton_Click);
             // 
             // VotersSearchTextBox
             // 
@@ -193,6 +203,8 @@
             this.VotersSearchTextBox.Size = new System.Drawing.Size(205, 29);
             this.VotersSearchTextBox.TabIndex = 15;
             this.VotersSearchTextBox.Text = "Search";
+            this.VotersSearchTextBox.Click += new System.EventHandler(this.VotersSearchTextBox_Click);
+            this.VotersSearchTextBox.TextChanged += new System.EventHandler(this.VotersSearchTextBox_TextChanged);
             // 
             // CandidatesSearchTextBox
             // 
@@ -202,6 +214,8 @@
             this.CandidatesSearchTextBox.Size = new System.Drawing.Size(205, 29);
             this.CandidatesSearchTextBox.TabIndex = 16;
             this.CandidatesSearchTextBox.Text = "Search";
+            this.CandidatesSearchTextBox.Click += new System.EventHandler(this.CandidatesSearchTextBox_Click);
+            this.CandidatesSearchTextBox.TextChanged += new System.EventHandler(this.CandidatesSearchTextBox_TextChanged);
             // 
             // LogOutButton
             // 
@@ -211,6 +225,7 @@
             this.LogOutButton.TabIndex = 17;
             this.LogOutButton.Text = "Log Out";
             this.LogOutButton.UseVisualStyleBackColor = true;
+            this.LogOutButton.Click += new System.EventHandler(this.LogOutButton_Click);
             // 
             // DeleteAccountButton
             // 
@@ -220,6 +235,7 @@
             this.DeleteAccountButton.TabIndex = 18;
             this.DeleteAccountButton.Text = "Delete account";
             this.DeleteAccountButton.UseVisualStyleBackColor = true;
+            this.DeleteAccountButton.Click += new System.EventHandler(this.DeleteAccountButton_Click);
             // 
             // VotersGroupBox
             // 
@@ -233,7 +249,7 @@
             this.VotersGroupBox.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.VotersGroupBox.Location = new System.Drawing.Point(12, 54);
             this.VotersGroupBox.Name = "VotersGroupBox";
-            this.VotersGroupBox.Size = new System.Drawing.Size(450, 400);
+            this.VotersGroupBox.Size = new System.Drawing.Size(423, 400);
             this.VotersGroupBox.TabIndex = 20;
             this.VotersGroupBox.TabStop = false;
             this.VotersGroupBox.Text = "Voters";
@@ -241,17 +257,18 @@
             // VotersCurrentPageTextBox
             // 
             this.VotersCurrentPageTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.VotersCurrentPageTextBox.Location = new System.Drawing.Point(370, 208);
+            this.VotersCurrentPageTextBox.Location = new System.Drawing.Point(257, 358);
             this.VotersCurrentPageTextBox.Name = "VotersCurrentPageTextBox";
             this.VotersCurrentPageTextBox.Size = new System.Drawing.Size(26, 23);
             this.VotersCurrentPageTextBox.TabIndex = 20;
             this.VotersCurrentPageTextBox.Text = "1";
+            this.VotersCurrentPageTextBox.TextChanged += new System.EventHandler(this.VotersCurrentPageTextBox_TextChanged);
             // 
             // VotersTotalPagesLabel
             // 
             this.VotersTotalPagesLabel.AutoSize = true;
             this.VotersTotalPagesLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.VotersTotalPagesLabel.Location = new System.Drawing.Point(402, 211);
+            this.VotersTotalPagesLabel.Location = new System.Drawing.Point(289, 361);
             this.VotersTotalPagesLabel.Name = "VotersTotalPagesLabel";
             this.VotersTotalPagesLabel.Size = new System.Drawing.Size(18, 15);
             this.VotersTotalPagesLabel.TabIndex = 19;
@@ -261,7 +278,7 @@
             // 
             this.VotersPagesLabel.AutoSize = true;
             this.VotersPagesLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.VotersPagesLabel.Location = new System.Drawing.Point(370, 190);
+            this.VotersPagesLabel.Location = new System.Drawing.Point(257, 335);
             this.VotersPagesLabel.Name = "VotersPagesLabel";
             this.VotersPagesLabel.Size = new System.Drawing.Size(38, 15);
             this.VotersPagesLabel.TabIndex = 18;
@@ -271,7 +288,7 @@
             // 
             this.VotersResultLabel.AutoSize = true;
             this.VotersResultLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.VotersResultLabel.Location = new System.Drawing.Point(392, 118);
+            this.VotersResultLabel.Location = new System.Drawing.Point(371, 358);
             this.VotersResultLabel.Name = "VotersResultLabel";
             this.VotersResultLabel.Size = new System.Drawing.Size(13, 15);
             this.VotersResultLabel.TabIndex = 17;
@@ -281,7 +298,7 @@
             // 
             this.VotersTotalResultLabel.AutoSize = true;
             this.VotersTotalResultLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.VotersTotalResultLabel.Location = new System.Drawing.Point(370, 90);
+            this.VotersTotalResultLabel.Location = new System.Drawing.Point(345, 335);
             this.VotersTotalResultLabel.Name = "VotersTotalResultLabel";
             this.VotersTotalResultLabel.Size = new System.Drawing.Size(72, 15);
             this.VotersTotalResultLabel.TabIndex = 16;
@@ -289,12 +306,14 @@
             // 
             // CandidatesGroupBox
             // 
+            this.CandidatesGroupBox.Controls.Add(this.InfoLabel4);
+            this.CandidatesGroupBox.Controls.Add(this.CandidateNameTextBox);
             this.CandidatesGroupBox.Controls.Add(this.CandidatesTotalPagesLabel);
             this.CandidatesGroupBox.Controls.Add(this.CandidatesCurrentPageTextBox);
             this.CandidatesGroupBox.Controls.Add(this.CandidatesPagesLabel);
-            this.CandidatesGroupBox.Controls.Add(this.CandidatesResultsLabel);
+            this.CandidatesGroupBox.Controls.Add(this.CandidatesResultLabel);
             this.CandidatesGroupBox.Controls.Add(this.CandidatesTotalResultsLabel);
-            this.CandidatesGroupBox.Controls.Add(this.dataGridView1);
+            this.CandidatesGroupBox.Controls.Add(this.CandidatesDataGridView);
             this.CandidatesGroupBox.Controls.Add(this.CandidatesSearchTextBox);
             this.CandidatesGroupBox.Controls.Add(this.AddCandidateButton);
             this.CandidatesGroupBox.Controls.Add(this.AmountCandidateslabel);
@@ -306,11 +325,29 @@
             this.CandidatesGroupBox.TabStop = false;
             this.CandidatesGroupBox.Text = "Candidates";
             // 
+            // InfoLabel4
+            // 
+            this.InfoLabel4.AutoSize = true;
+            this.InfoLabel4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.InfoLabel4.Location = new System.Drawing.Point(287, 63);
+            this.InfoLabel4.Name = "InfoLabel4";
+            this.InfoLabel4.Size = new System.Drawing.Size(122, 15);
+            this.InfoLabel4.TabIndex = 27;
+            this.InfoLabel4.Text = "Enter candidate name";
+            // 
+            // CandidateNameTextBox
+            // 
+            this.CandidateNameTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CandidateNameTextBox.Location = new System.Drawing.Point(288, 90);
+            this.CandidateNameTextBox.Name = "CandidateNameTextBox";
+            this.CandidateNameTextBox.Size = new System.Drawing.Size(100, 29);
+            this.CandidateNameTextBox.TabIndex = 26;
+            // 
             // CandidatesTotalPagesLabel
             // 
             this.CandidatesTotalPagesLabel.AutoSize = true;
             this.CandidatesTotalPagesLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CandidatesTotalPagesLabel.Location = new System.Drawing.Point(404, 211);
+            this.CandidatesTotalPagesLabel.Location = new System.Drawing.Point(301, 366);
             this.CandidatesTotalPagesLabel.Name = "CandidatesTotalPagesLabel";
             this.CandidatesTotalPagesLabel.Size = new System.Drawing.Size(18, 15);
             this.CandidatesTotalPagesLabel.TabIndex = 25;
@@ -319,37 +356,38 @@
             // CandidatesCurrentPageTextBox
             // 
             this.CandidatesCurrentPageTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CandidatesCurrentPageTextBox.Location = new System.Drawing.Point(372, 208);
+            this.CandidatesCurrentPageTextBox.Location = new System.Drawing.Point(269, 363);
             this.CandidatesCurrentPageTextBox.Name = "CandidatesCurrentPageTextBox";
             this.CandidatesCurrentPageTextBox.Size = new System.Drawing.Size(26, 23);
             this.CandidatesCurrentPageTextBox.TabIndex = 24;
             this.CandidatesCurrentPageTextBox.Text = "1";
+            this.CandidatesCurrentPageTextBox.TextChanged += new System.EventHandler(this.CandidatesCurrentPageTextBox_TextChanged);
             // 
             // CandidatesPagesLabel
             // 
             this.CandidatesPagesLabel.AutoSize = true;
             this.CandidatesPagesLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CandidatesPagesLabel.Location = new System.Drawing.Point(372, 190);
+            this.CandidatesPagesLabel.Location = new System.Drawing.Point(269, 335);
             this.CandidatesPagesLabel.Name = "CandidatesPagesLabel";
             this.CandidatesPagesLabel.Size = new System.Drawing.Size(38, 15);
             this.CandidatesPagesLabel.TabIndex = 23;
             this.CandidatesPagesLabel.Text = "Pages";
             // 
-            // CandidatesResultsLabel
+            // CandidatesResultLabel
             // 
-            this.CandidatesResultsLabel.AutoSize = true;
-            this.CandidatesResultsLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CandidatesResultsLabel.Location = new System.Drawing.Point(394, 118);
-            this.CandidatesResultsLabel.Name = "CandidatesResultsLabel";
-            this.CandidatesResultsLabel.Size = new System.Drawing.Size(13, 15);
-            this.CandidatesResultsLabel.TabIndex = 22;
-            this.CandidatesResultsLabel.Text = "0";
+            this.CandidatesResultLabel.AutoSize = true;
+            this.CandidatesResultLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CandidatesResultLabel.Location = new System.Drawing.Point(396, 366);
+            this.CandidatesResultLabel.Name = "CandidatesResultLabel";
+            this.CandidatesResultLabel.Size = new System.Drawing.Size(13, 15);
+            this.CandidatesResultLabel.TabIndex = 22;
+            this.CandidatesResultLabel.Text = "0";
             // 
             // CandidatesTotalResultsLabel
             // 
             this.CandidatesTotalResultsLabel.AutoSize = true;
             this.CandidatesTotalResultsLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CandidatesTotalResultsLabel.Location = new System.Drawing.Point(372, 90);
+            this.CandidatesTotalResultsLabel.Location = new System.Drawing.Point(366, 335);
             this.CandidatesTotalResultsLabel.Name = "CandidatesTotalResultsLabel";
             this.CandidatesTotalResultsLabel.Size = new System.Drawing.Size(72, 15);
             this.CandidatesTotalResultsLabel.TabIndex = 21;
@@ -360,7 +398,7 @@
             this.pictureBox1.Image = global::ONWELO_VOTE_APP.Properties.Resources.Vote;
             this.pictureBox1.Location = new System.Drawing.Point(12, 457);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(450, 172);
+            this.pictureBox1.Size = new System.Drawing.Size(423, 172);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 22;
             this.pictureBox1.TabStop = false;
@@ -399,7 +437,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.voterBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.candidateBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.VotersDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CandidatesDataGridView)).EndInit();
             this.VotersGroupBox.ResumeLayout(false);
             this.VotersGroupBox.PerformLayout();
             this.CandidatesGroupBox.ResumeLayout(false);
@@ -415,7 +453,7 @@
         private BindingSource voterBindingSource;
         private BindingSource candidateBindingSource;
         private DataGridView VotersDataGridView;
-        private DataGridView dataGridView1;
+        private DataGridView CandidatesDataGridView;
         private Label UserLable;
         private Label InfoLabel3;
         private Label InfoLabel;
@@ -440,8 +478,10 @@
         private Label CandidatesTotalPagesLabel;
         private TextBox CandidatesCurrentPageTextBox;
         private Label CandidatesPagesLabel;
-        private Label CandidatesResultsLabel;
+        private Label CandidatesResultLabel;
         private Label CandidatesTotalResultsLabel;
         private Button EditAccountButton;
+        private Label InfoLabel4;
+        private TextBox CandidateNameTextBox;
     }
 }

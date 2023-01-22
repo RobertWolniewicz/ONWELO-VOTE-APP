@@ -1,4 +1,4 @@
-﻿using ONWELO_VOTE_APP.AuthenticationOptions;
+﻿using ONWELO_VOTE_APP.UserOptions;
 using ONWELO_VOTE_APP.Entity;
 using System;
 using System.Collections.Generic;
@@ -14,6 +14,7 @@ namespace ONWELO_VOTE_APP
 {
     public partial class UserDataWindow : Form
     {
+        public Voter ReturnValue { get; set; }
         Voter Voter;
         public UserDataWindow()
         {
@@ -37,7 +38,8 @@ namespace ONWELO_VOTE_APP
                 await ResultLabelClean();
                 return;
             }
-            await Tests();
+
+            if (!await Tests()) return;
 
             string salt = BCrypt.Net.BCrypt.GenerateSalt();
 
@@ -54,7 +56,9 @@ namespace ONWELO_VOTE_APP
         }
         private async void EditSaveButton_Click(object sender, EventArgs e)
         {
-            await Tests();
+
+            if (!await Tests()) return;
+
             string salt = BCrypt.Net.BCrypt.GenerateSalt();
             var newVoter = new Voter();
 
@@ -70,27 +74,28 @@ namespace ONWELO_VOTE_APP
                 newVoter.Password = Voter.Password;
             else newVoter.Password = BCrypt.Net.BCrypt.HashPassword(PasswordTextBox.Text, salt);
 
-            UserEditor.Edit(Voter,newVoter);
+            await UserEditor.Edit(Voter,newVoter);
+            ReturnValue = newVoter;
             ResultLabel.Text = "Data has been Edited";
             await Task.Delay(2000);
             this.Close();
 
 
         }
-        async Task Tests()
+        async Task<bool> Tests()
         {
             if (PasswordTextBox.Text != RepeatPasswordTextBox.Text)
             {
                 ResultLabel.Text = "Passworts Are different";
                 await ResultLabelClean();
-                return;
+                return false;
             }
             var validator = new EmailAddresValidator(EmailTextBox.Text.ToLower());
             if ((!validator.IsValidEmail()&& Voter == null) || (!validator.IsValidEmail() && Voter != null && EmailTextBox.Text.Length!=0) )
             {
                 ResultLabel.Text = "Incorrect email addres";
                 await ResultLabelClean();
-                return;
+                return false;
             }
             if (EmailTextBox.Text.Length != 0)
             { 
@@ -98,9 +103,10 @@ namespace ONWELO_VOTE_APP
                 {
                     ResultLabel.Text = "This email address is taken ";
                     await ResultLabelClean();
-                    return;
+                    return false;
                 } 
             }
+            return true;
   
         }
         async Task ResultLabelClean()

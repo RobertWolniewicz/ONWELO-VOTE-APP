@@ -8,12 +8,12 @@ using FluentValidation.Validators;
 using Microsoft.EntityFrameworkCore;
 using ONWELO_VOTE_APP.Entity;
 
-namespace ONWELO_VOTE_APP.AuthenticationOptions
+namespace ONWELO_VOTE_APP.UserOptions
 {
     public class EmailAddresValidator
     {
         string _email;
-        VoteAppDB DbContext = new VoteAppDB();
+        readonly VoteAppDB DbContext = new();
         public EmailAddresValidator(string email)
         {
             _email=email;

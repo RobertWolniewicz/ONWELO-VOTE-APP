@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ONWELO_VOTE_APP.AuthenticationOptions
+namespace ONWELO_VOTE_APP.UserOptions
 {
     public class UserAuthentication
     {
-       static VoteAppDB DbContext = new VoteAppDB();
+       static readonly VoteAppDB DbContext = new();
 
         public static  async Task<Voter> Verification(string UserEmail, string Password)
         {

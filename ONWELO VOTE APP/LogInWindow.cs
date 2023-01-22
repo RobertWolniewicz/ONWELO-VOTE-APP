@@ -1,4 +1,4 @@
-﻿using ONWELO_VOTE_APP.AuthenticationOptions;
+﻿using ONWELO_VOTE_APP.UserOptions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,9 +30,26 @@ namespace ONWELO_VOTE_APP
             var User = await UserAuthentication.Verification(EmailTextBox.Text.ToLower(), PasswordTextBox.Text);
             if(User !=null)
             {
+                EmailTextBox.Text = "";
+                PasswordTextBox.Text = "";
                 var form = new MainWindow(User);
                 this.Hide();
-                await Task.Run(() => form.ShowDialog());
+                form.ShowDialog();
+                if (form.DialogResult == DialogResult.Retry)
+                {
+                    this.Show();
+                    ResultLabel.Text = "You have been successfully logged out";
+                    await ResultLabelClean();
+                    return;
+                }
+                else if (form.DialogResult == DialogResult.Yes)
+                {
+                    this.Show();
+                    ResultLabel.Text = "Your account has been successfully deleted";
+                    await ResultLabelClean();
+                    return;
+                }
+                else this.Close();
             }
             else
             {
