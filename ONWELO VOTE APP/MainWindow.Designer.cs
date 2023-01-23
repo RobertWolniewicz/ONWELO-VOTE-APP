@@ -85,9 +85,9 @@
             this.VotersDataGridView.Location = new System.Drawing.Point(6, 68);
             this.VotersDataGridView.Name = "VotersDataGridView";
             this.VotersDataGridView.ReadOnly = true;
-            this.VotersDataGridView.RowTemplate.Height = 25;
+            this.VotersDataGridView.RowTemplate.Height = 32;
             this.VotersDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.VotersDataGridView.Size = new System.Drawing.Size(244, 318);
+            this.VotersDataGridView.Size = new System.Drawing.Size(244, 329);
             this.VotersDataGridView.TabIndex = 0;
             // 
             // CandidatesDataGridView
@@ -96,10 +96,9 @@
             this.CandidatesDataGridView.Location = new System.Drawing.Point(6, 68);
             this.CandidatesDataGridView.Name = "CandidatesDataGridView";
             this.CandidatesDataGridView.ReadOnly = true;
-            this.CandidatesDataGridView.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.CandidatesDataGridView.RowTemplate.Height = 25;
+            this.CandidatesDataGridView.RowTemplate.Height = 32;
             this.CandidatesDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.CandidatesDataGridView.Size = new System.Drawing.Size(244, 318);
+            this.CandidatesDataGridView.Size = new System.Drawing.Size(244, 329);
             this.CandidatesDataGridView.TabIndex = 2;
             this.CandidatesDataGridView.SelectionChanged += new System.EventHandler(this.CandidatesDataGridView_SelectionChanged);
             // 
@@ -158,7 +157,7 @@
             this.ResultLabel.AutoSize = true;
             this.ResultLabel.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ResultLabel.ForeColor = System.Drawing.Color.Firebrick;
-            this.ResultLabel.Location = new System.Drawing.Point(626, 564);
+            this.ResultLabel.Location = new System.Drawing.Point(441, 601);
             this.ResultLabel.Name = "ResultLabel";
             this.ResultLabel.Size = new System.Drawing.Size(113, 28);
             this.ResultLabel.TabIndex = 10;

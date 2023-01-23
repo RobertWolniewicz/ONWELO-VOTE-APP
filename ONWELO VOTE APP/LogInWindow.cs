@@ -23,8 +23,8 @@ namespace ONWELO_VOTE_APP
         {
             if( EmailTextBox.Text.Length==0 || PasswordTextBox.Text.Length==0)
             {
-                ResultLabel.Text = "Incorrect e-mail or password";
-                await ResultLabelClean();
+
+                await ResultLabelShow("Incorrect e-mail or password");
                 return;  
             }
             var User = await UserAuthentication.Verification(EmailTextBox.Text.ToLower(), PasswordTextBox.Text);
@@ -38,23 +38,20 @@ namespace ONWELO_VOTE_APP
                 if (form.DialogResult == DialogResult.Retry)
                 {
                     this.Show();
-                    ResultLabel.Text = "You have been successfully logged out";
-                    await ResultLabelClean();
+                    await ResultLabelShow("You have been successfully logged out");
                     return;
                 }
                 else if (form.DialogResult == DialogResult.Yes)
                 {
                     this.Show();
-                    ResultLabel.Text = "Your account has been successfully deleted";
-                    await ResultLabelClean();
+                    await ResultLabelShow("Your account has been successfully deleted");
                     return;
                 }
                 else this.Close();
             }
             else
             {
-                ResultLabel.Text = "Incorrect e-mail or password";
-                await ResultLabelClean();
+                await ResultLabelShow("Incorrect e-mail or password");
                 return;
             }
         }
@@ -65,8 +62,9 @@ namespace ONWELO_VOTE_APP
             await Task.Run(() => form.ShowDialog());
             ResultLabel.Text = "Please log in";
         }
-        async Task ResultLabelClean()
+        async Task ResultLabelShow(string text)
         {
+            ResultLabel.Text= text;
             await Task.Delay(2000);
             ResultLabel.Text = "";
         }

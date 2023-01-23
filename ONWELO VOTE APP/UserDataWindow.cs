@@ -34,8 +34,7 @@ namespace ONWELO_VOTE_APP
         {
             if (PasswordTextBox.Text.Length==0 || RepeatPasswordTextBox.Text.Length == 0 || NameTextBox.Text.Length == 0 || EmailTextBox.Text.Length == 0)
             {
-                ResultLabel.Text = "All fields are required";
-                await ResultLabelClean();
+                await ResultLabelShow("All fields are required");
                 return;
             }
 
@@ -86,31 +85,29 @@ namespace ONWELO_VOTE_APP
         {
             if (PasswordTextBox.Text != RepeatPasswordTextBox.Text)
             {
-                ResultLabel.Text = "Passworts Are different";
-                await ResultLabelClean();
+                await ResultLabelShow("Passwords are different");
                 return false;
             }
             var validator = new EmailAddresValidator(EmailTextBox.Text.ToLower());
             if ((!validator.IsValidEmail()&& Voter == null) || (!validator.IsValidEmail() && Voter != null && EmailTextBox.Text.Length!=0) )
             {
-                ResultLabel.Text = "Incorrect email addres";
-                await ResultLabelClean();
+                await ResultLabelShow("Incorrect email addres");
                 return false;
             }
             if (EmailTextBox.Text.Length != 0)
             { 
                 if (!validator.IsEmailExist())
                 {
-                    ResultLabel.Text = "This email address is taken ";
-                    await ResultLabelClean();
+                    await ResultLabelShow("This email address is taken");
                     return false;
                 } 
             }
             return true;
   
         }
-        async Task ResultLabelClean()
+        async Task ResultLabelShow(string text)
         {
+            ResultLabel.Text=text;
             await Task.Delay(2000);
             if(Voter != null)
             {

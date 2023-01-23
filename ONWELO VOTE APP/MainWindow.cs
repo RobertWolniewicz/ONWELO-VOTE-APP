@@ -14,17 +14,13 @@ namespace ONWELO_VOTE_APP
         string ChosenCandidateName;
         SieveModel VotersQuery= new()
         {
-            Filters = null,
-            Sorts =null,
             Page=1,
-            PageSize=10
+            PageSize=9
         };
         SieveModel CandidatesQuery = new()
         {
-            Filters = null,
-            Sorts = null,
             Page = 1,
-            PageSize = 10
+            PageSize = 9
         };
 
         public MainWindow(Voter User)
@@ -57,6 +53,7 @@ namespace ONWELO_VOTE_APP
             await Task.Run(() => form.ShowDialog());
             CurentUser = form.ReturnValue;
             UserLable.Text = "Hi " + CurentUser.Name;
+            VotersSearchTextBox_TextChanged(sender, e);
         }
 
         private void LogOutButton_Click(object sender, EventArgs e)
@@ -76,22 +73,25 @@ namespace ONWELO_VOTE_APP
             }
             else
             {
-                ResultLabel.Text = "Cannot delete your account?";
-                await ResultLabelClean();
-
+                await ResultLabelShow("Cannot delete your account?");
             }
             
         }
-        async Task ResultLabelClean()
+        async Task ResultLabelShow(string text)
         {
-            await Task.Delay(2000);
+            ResultLabel.Text = text;
+            await Task.Delay(4000);
             ResultLabel.Text = "";
         }
 
         private async void VotersSearchTextBox_TextChanged(object sender, EventArgs e)
         {
             PageResult<VoterDto> VotersData;
-            if (VotersCurrentPageTextBox.Text == "0") return;
+            if (VotersCurrentPageTextBox.Text == "0" || VotersCurrentPageTextBox.Text == "" || Convert.ToInt32(VotersCurrentPageTextBox.Text) > Convert.ToInt32(VotersTotalPagesLabel.Text.Remove(0, 1)))
+            {
+                await ResultLabelShow("Incorrect page data");
+                return;
+            }
             VotersQuery.Page = Convert.ToInt32(VotersCurrentPageTextBox.Text);
             if (VotersSearchTextBox.Text.Length == 0 || VotersSearchTextBox.Text == "Search")
             {
@@ -110,7 +110,11 @@ namespace ONWELO_VOTE_APP
         private async void CandidatesSearchTextBox_TextChanged(object sender, EventArgs e)
         {
             PageResult<CandidateDto> CandidatesData;
-            if (CandidatesCurrentPageTextBox.Text == "0") return;
+            if (CandidatesCurrentPageTextBox.Text == "0" || CandidatesCurrentPageTextBox.Text == "" || Convert.ToInt32(CandidatesCurrentPageTextBox.Text) > Convert.ToInt32(CandidatesTotalPagesLabel.Text.Remove(0, 1)))
+            {
+                await ResultLabelShow("Incorrect page data");
+                return;
+            }
             CandidatesQuery.Page = Convert.ToInt32(CandidatesCurrentPageTextBox.Text);
             if (CandidatesSearchTextBox.Text.Length == 0 || CandidatesSearchTextBox.Text == "Search")
             {
@@ -129,27 +133,24 @@ namespace ONWELO_VOTE_APP
         {
             if (CurentUser.AmountOfCandidats==0)
             {
-                ResultLabel.Text = "You can't add more candidates";
-                await ResultLabelClean();
+                await ResultLabelShow("You can't add more candidates");
                 return;
             }
             if (CandidateNameTextBox.Text.Length==0)
             {
-                ResultLabel.Text = "Please insert candidate name";
-                await ResultLabelClean();
+
+                await ResultLabelShow("Please insert candidate name");
                 return;
             }
             if (CandidateNameTextBox.Text.Length < 4)
             {
-                ResultLabel.Text = "Candidate name must contains at least 4 characters";
-                await ResultLabelClean();
+                await ResultLabelShow("Candidate name must contains at least 4 characters");
                 return;
             }
           
             if (!CandidateValidater.Validate(CandidateNameTextBox.Text))
             {
-                ResultLabel.Text = "This candidate exist";
-                await  ResultLabelClean();
+                await  ResultLabelShow("This candidate exist");
                 return;
             }
             var NewCandidate = new Candidate()
@@ -170,8 +171,7 @@ namespace ONWELO_VOTE_APP
             ChoosedCandidatLabel.Text = "";
 
             CandidatesSearchTextBox_TextChanged(sender, e);
-            ResultLabel.Text = "Candidate has been added";
-            await ResultLabelClean();
+            await ResultLabelShow("Candidate has been added");
 
         }
         private  void VotersSearchTextBox_Click(object sender, EventArgs e)
@@ -199,27 +199,23 @@ namespace ONWELO_VOTE_APP
         {
             if(ChosenCandidateName==null)
             {
-                ResultLabel.Text = "Please select your candidate";
-                await ResultLabelClean();
+                await ResultLabelShow("Please select your candidate");
                 return;
             }
             if(CurentUser.HasVoted)
             {
-                ResultLabel.Text = "You has been voted";
-                await ResultLabelClean();
+                await ResultLabelShow("You has been voted");
                 return;
             }
             CurentUser = await VoteAdder.Vote(ChosenCandidateName, CurentUser);
             if(!CurentUser.HasVoted)
             {
-                ResultLabel.Text = "Something go wrong. Please try again later";
-                await  ResultLabelClean();
+                await  ResultLabelShow("Something go wrong. Please try again later");
                 return;
             }
             VotersSearchTextBox_TextChanged(sender, e);
             CandidatesSearchTextBox_TextChanged(sender, e);
-            ResultLabel.Text = "Thanks for voted!";
-            await ResultLabelClean();
+            await ResultLabelShow("Thanks for voted!");
 
 
         }
